@@ -1,0 +1,4 @@
+enum BlockProcessState {
+  busy,
+  idle,
+}
