@@ -1,22 +1,39 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter_address_code_api/core/utils/constants.dart';
 
-abstract class Failure extends Equatable {
-  String get message;
-}
+abstract class Failure extends Equatable {}
 
 class UnexpectedFailure extends Failure {
-  @override
-  String get message => kUnexpectedError;
+  UnexpectedFailure(this.errorMessage);
+
+  final String errorMessage;
 
   @override
   List<Object?> get props => [];
 }
 
 class ServerFailure extends Failure {
-  @override
-  List<Object?> get props => [];
+  ServerFailure(this.errorMessage);
+
+  final String errorMessage;
 
   @override
-  String get message => kServerError;
+  List<Object?> get props => [];
+}
+
+class EmptyAddressCodeFailure extends Failure {
+  EmptyAddressCodeFailure(this.errorMessage);
+
+  final String errorMessage;
+
+  @override
+  List<Object?> get props => [];
+}
+
+class InvalidAddressCodeFailure extends Failure {
+  InvalidAddressCodeFailure(this.errorMessage);
+
+  final String errorMessage;
+
+  @override
+  List<Object?> get props => [];
 }
