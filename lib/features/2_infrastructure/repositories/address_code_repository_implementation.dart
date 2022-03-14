@@ -20,7 +20,7 @@ class AddressCodeRepositoryImplementation implements IAddressCodeRepository {
       return Right(result);
     } on ServerException {
       return Left(ServerFailure(kServerError));
-    } on Exception {
+    } on UnexpectedException {
       return Left(UnexpectedFailure(kUnexpectedError));
     }
   }
