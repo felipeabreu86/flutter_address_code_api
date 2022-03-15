@@ -16,13 +16,12 @@ class GetAddressUsecase implements UseCase<Address, AddressCodeRequestParams> {
   Future<Either<Failure, Address>> call(AddressCodeRequestParams params) async {
     // Validations
     if (params.cep.isEmpty) {
-      throw Left(EmptyAddressCodeFailure(kEmptyAddressCodeError));
+      return Left(EmptyAddressCodeFailure(kEmptyAddressCodeError));
     }
     if (!NumberHelper.isNumeric(params.cep)) {
-      throw Left(InvalidAddressCodeFailure(kInvalidAddressCodeError));
+      return Left(InvalidAddressCodeFailure(kInvalidAddressCodeError));
     }
     // Repository usage
-    final result = await _addressCodeRepository.getAddress(params);
-    return result;
+    return await _addressCodeRepository.getAddress(params);
   }
 }
