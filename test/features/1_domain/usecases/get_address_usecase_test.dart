@@ -17,16 +17,17 @@ class AddressCodeRepositoryMock implements IAddressCodeRepository {
     if (params.cep == tAddressCode) {
       return Right(
         Address(
-            bairro: 'bairro',
-            cep: params.cep,
-            ddd: '00',
-            ibge: 'ibge',
-            localidade: 'localidade',
-            gia: 'gia',
-            siafi: 'siafi',
-            uf: 'AA',
-            complemento: 'complemento',
-            logradouro: 'logradouro'),
+          bairro: 'bairro',
+          cep: params.cep,
+          ddd: '00',
+          ibge: 'ibge',
+          localidade: 'localidade',
+          gia: 'gia',
+          siafi: 'siafi',
+          uf: 'AA',
+          complemento: 'complemento',
+          logradouro: 'logradouro',
+        ),
       );
     } else if (params.cep == tNonExistentAddressCode) {
       return Left(ServerFailure("Server Failure Message"));
@@ -46,7 +47,10 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tAddressCode));
     expect(result.isRight(), true);
-    expect(result.foldRight((z) => null, (r, previous) => r.cep), tAddressCode);
+    expect(
+      result.foldRight((l) => null, (r, previous) => r.cep),
+      tAddressCode,
+    );
   });
 
   test('GetAddressUsecase - Should receive a server failure from repository...',
@@ -58,7 +62,7 @@ void main() {
   });
 
   test(
-      'GetAddressUsecase - Should receive a unexpected failure from repository...',
+      'GetAddressUsecase - Should receive an unexpected failure from repository...',
       () async {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tUnrecognizedAddressCode));
@@ -66,7 +70,7 @@ void main() {
     expect(result, Left(UnexpectedFailure("Unexpected Failure Message")));
   });
 
-  test('GetAddressUsecase - Should receive empty address code failure...',
+  test('GetAddressUsecase - Should receive an empty address code failure...',
       () async {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(''));
@@ -74,7 +78,7 @@ void main() {
     expect(result, Left(EmptyAddressCodeFailure('Error message')));
   });
 
-  test('GetAddressUsecase - Should receive invalid address code failure...',
+  test('GetAddressUsecase - Should receive an invalid address code failure...',
       () async {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tAddressCode + 'a'));
