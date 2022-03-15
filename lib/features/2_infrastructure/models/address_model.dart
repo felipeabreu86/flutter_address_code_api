@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter_address_code_api/features/1_domain/entities/address.dart';
 
 class AddressModel extends Address {
@@ -82,7 +81,7 @@ class AddressModel extends Address {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       'cep': cep,
       'logradouro': logradouro,
@@ -96,8 +95,6 @@ class AddressModel extends Address {
       'siafi': siafi,
     };
   }
-
-  String toJson() => json.encode(toMap());
 
   @override
   String toString() {
