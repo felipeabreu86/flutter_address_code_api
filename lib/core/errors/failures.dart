@@ -1,10 +1,13 @@
 import 'package:equatable/equatable.dart';
 
-abstract class Failure extends Equatable {}
+abstract class Failure extends Equatable {
+  String get errorMessage;
+}
 
 class UnexpectedFailure extends Failure {
   UnexpectedFailure(this.errorMessage);
 
+  @override
   final String errorMessage;
 
   @override
@@ -14,6 +17,7 @@ class UnexpectedFailure extends Failure {
 class ServerFailure extends Failure {
   ServerFailure(this.errorMessage);
 
+  @override
   final String errorMessage;
 
   @override
@@ -23,6 +27,7 @@ class ServerFailure extends Failure {
 class EmptyAddressCodeFailure extends Failure {
   EmptyAddressCodeFailure(this.errorMessage);
 
+  @override
   final String errorMessage;
 
   @override
@@ -32,6 +37,7 @@ class EmptyAddressCodeFailure extends Failure {
 class InvalidAddressCodeFailure extends Failure {
   InvalidAddressCodeFailure(this.errorMessage);
 
+  @override
   final String errorMessage;
 
   @override

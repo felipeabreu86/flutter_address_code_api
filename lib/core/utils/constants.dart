@@ -1,5 +1,5 @@
 // App
-const String kAppTitle = "";
+const String kAppTitle = "Address Search";
 
 // Routes
 const String kInitialRoute = "/";

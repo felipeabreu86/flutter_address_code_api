@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 
 ThemeData get themeDataLight {
   return ThemeData(
-    appBarTheme: const AppBarTheme(
-      elevation: 0,
-      color: Colors.white,
-    ),
     scaffoldBackgroundColor: Colors.white,
-    primaryColor: Colors.black,
+    primaryColor: Colors.blue,
     colorScheme: ColorScheme.fromSwatch().copyWith(
-      primary: Colors.black,
-      secondary: Colors.black,
+      primary: Colors.blue,
+      secondary: Colors.blue,
     ),
     splashColor: Colors.transparent,
     fontFamily: 'IBM',

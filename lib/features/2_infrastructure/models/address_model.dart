@@ -25,6 +25,19 @@ class AddressModel extends Address {
           siafi: siafi,
         );
 
+  static const emptyAddress = Address(
+    cep: '',
+    logradouro: '',
+    complemento: '',
+    bairro: '',
+    localidade: '',
+    uf: '',
+    ibge: '',
+    gia: '',
+    ddd: '',
+    siafi: '',
+  );
+
   factory AddressModel.fromJson(Map<String, dynamic> json) {
     return AddressModel(
       cep: json['cep']?.toString() ?? '',
