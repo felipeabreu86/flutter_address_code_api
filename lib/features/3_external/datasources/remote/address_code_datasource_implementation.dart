@@ -22,6 +22,8 @@ class AddressCodeDatasourceImplementation implements IAddressCodeDatasource {
       } else {
         throw ServerException();
       }
+    } on ServerException {
+      rethrow;
     } on Exception {
       throw UnexpectedException();
     }

@@ -47,9 +47,11 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tAddressCode));
     expect(result.isRight(), true);
-    expect(
-      result.foldRight((l) => null, (r, previous) => r.cep),
-      tAddressCode,
+    result.fold(
+      (exception) => {},
+      (address) => {
+        expect(address.cep == tAddressCode, true),
+      },
     );
   });
 
@@ -58,7 +60,11 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tNonExistentAddressCode));
     expect(result.isLeft(), true);
-    expect(result, Left(ServerFailure("Server Failure Message")));
+    result.fold(
+      (exception) =>
+          expect(result, Left(ServerFailure("Server Failure Message"))),
+      (address) => {},
+    );
   });
 
   test(
@@ -67,7 +73,11 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tUnrecognizedAddressCode));
     expect(result.isLeft(), true);
-    expect(result, Left(UnexpectedFailure("Unexpected Failure Message")));
+    result.fold(
+      (exception) =>
+          expect(result, Left(UnexpectedFailure("Unexpected Failure Message"))),
+      (address) => {},
+    );
   });
 
   test('GetAddressUsecase - Should receive an empty address code failure...',
@@ -75,7 +85,11 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(''));
     expect(result.isLeft(), true);
-    expect(result, Left(EmptyAddressCodeFailure('Error message')));
+    result.fold(
+      (exception) =>
+          expect(result, Left(EmptyAddressCodeFailure('Error message'))),
+      (address) => {},
+    );
   });
 
   test('GetAddressUsecase - Should receive an invalid address code failure...',
@@ -83,6 +97,10 @@ void main() {
     final Either<Failure, Address> result =
         await usecase(AddressCodeRequestParams(tAddressCode + 'a'));
     expect(result.isLeft(), true);
-    expect(result, Left(InvalidAddressCodeFailure('Error message')));
+    result.fold(
+      (exception) =>
+          expect(result, Left(InvalidAddressCodeFailure('Error message'))),
+      (address) => {},
+    );
   });
 }
