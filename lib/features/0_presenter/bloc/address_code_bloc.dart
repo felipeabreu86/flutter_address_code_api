@@ -16,7 +16,8 @@ class AddressCodeBloc
   AddressCodeBloc(this._getAddressUsecase) : super(const AddressCodeInitial()) {
     on<AddressCodeSearch>(
       _addressCodeSearch,
-      transformer: sequential(),
+      // concurrent, sequential, droppable, restartable
+      transformer: concurrent(),
     );
   }
 
