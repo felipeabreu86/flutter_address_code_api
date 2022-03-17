@@ -50,23 +50,24 @@ class _HomePageState extends State<HomePage> {
             ),
             const SizedBox(height: 20),
             BlocBuilder<AddressCodeBloc, AddressCodeState>(
-                bloc: _addressCodeBloc,
-                builder: (context, state) {
-                  if (state is AddressCodeLoading) {
-                    return const Center(child: CupertinoActivityIndicator());
-                  } else if (state is AddressCodeError) {
-                    return Column(
-                      children: [
-                        const Icon(Icons.error_outline),
-                        Text(state.errorMessage),
-                      ],
-                    );
-                  } else if (state is AddressCodeDone) {
-                    return Text(state.formatedAddress);
-                  } else {
-                    return const SizedBox();
-                  }
-                }),
+              bloc: _addressCodeBloc,
+              builder: (context, state) {
+                if (state is AddressCodeLoading) {
+                  return const Center(child: CupertinoActivityIndicator());
+                } else if (state is AddressCodeError) {
+                  return Column(
+                    children: [
+                      const Icon(Icons.error_outline),
+                      Text(state.errorMessage),
+                    ],
+                  );
+                } else if (state is AddressCodeDone) {
+                  return Text(state.formatedAddress);
+                } else {
+                  return const SizedBox();
+                }
+              },
+            ),
           ],
         ),
       ),
