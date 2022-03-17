@@ -29,9 +29,9 @@ class AddressCodeDatasourceMock implements IAddressCodeDatasource {
         logradouro: 'logradouro',
       );
     } else if (params.cep == tNonExistentAddressCode) {
-      throw ServerException();
+      throw const ServerException('Error message');
     } else {
-      throw UnexpectedException();
+      throw const UnexpectedException('Error message');
     }
   }
 }

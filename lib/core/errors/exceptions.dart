@@ -1,11 +1,25 @@
 import 'package:equatable/equatable.dart';
 
-class UnexpectedException extends Equatable implements Exception {
-  @override
-  List<Object> get props => [];
+abstract class CustomException implements Exception {
+  String get errorMessage;
 }
 
-class ServerException extends Equatable implements Exception {
+class UnexpectedException extends Equatable implements CustomException {
+  const UnexpectedException(this.errorMessage);
+
   @override
   List<Object> get props => [];
+
+  @override
+  final String errorMessage;
+}
+
+class ServerException extends Equatable implements CustomException {
+  const ServerException(this.errorMessage);
+
+  @override
+  List<Object> get props => [];
+
+  @override
+  final String errorMessage;
 }

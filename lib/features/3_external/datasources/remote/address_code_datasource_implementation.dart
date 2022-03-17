@@ -17,15 +17,14 @@ class AddressCodeDatasourceImplementation implements IAddressCodeDatasource {
     try {
       final response = await client.get(_cepEndpoint(params.cep));
       if (response.statusCode == 200) {
-        final Map<String, dynamic> bodyDecoded = json.decode(response.body);
-        return AddressModel.fromJson(bodyDecoded);
+        return AddressModel.fromJson(json.decode(response.body));
       } else {
-        throw ServerException();
+        throw ServerException('Status Code Error ${response.statusCode}');
       }
     } on ServerException {
       rethrow;
-    } on Exception {
-      throw UnexpectedException();
+    } on Exception catch (e) {
+      throw UnexpectedException(e.toString());
     }
   }
 }
