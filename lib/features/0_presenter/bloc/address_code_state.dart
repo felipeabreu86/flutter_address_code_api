@@ -1,10 +1,21 @@
 part of 'address_code_bloc.dart';
 
-abstract class AddressCodeState extends Equatable {
-  const AddressCodeState(this.address, this.errorMessage);
+abstract class AddressCodeState extends Equatable {}
+
+class AddressCodeInitial extends AddressCodeState {
+  @override
+  List<Object?> get props => [];
+}
+
+class AddressCodeLoading extends AddressCodeState {
+  @override
+  List<Object?> get props => [];
+}
+
+class AddressCodeDone extends AddressCodeState {
+  AddressCodeDone(this.address);
 
   final Address address;
-  final String errorMessage;
 
   String get formatedAddress {
     var logradouro = address.logradouro;
@@ -22,22 +33,14 @@ abstract class AddressCodeState extends Equatable {
   }
 
   @override
-  List<Object> get props => [address, errorMessage];
-}
-
-class AddressCodeInitial extends AddressCodeState {
-  const AddressCodeInitial() : super(AddressModel.emptyAddress, '');
-}
-
-class AddressCodeLoading extends AddressCodeState {
-  const AddressCodeLoading() : super(AddressModel.emptyAddress, '');
-}
-
-class AddressCodeDone extends AddressCodeState {
-  const AddressCodeDone(Address address) : super(address, '');
+  List<Object?> get props => [address];
 }
 
 class AddressCodeError extends AddressCodeState {
-  const AddressCodeError(String errorMessage)
-      : super(AddressModel.emptyAddress, errorMessage);
+  AddressCodeError(this.errorMessage);
+
+  final String errorMessage;
+
+  @override
+  List<Object?> get props => [errorMessage];
 }
