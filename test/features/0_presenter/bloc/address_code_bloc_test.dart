@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_address_code_api/core/errors/failures.dart';
-import 'package:flutter_address_code_api/core/params/address_code_request_params.dart';
-import 'package:flutter_address_code_api/features/0_presenter/bloc/address_code_bloc.dart';
-import 'package:flutter_address_code_api/features/1_domain/entities/address.dart';
-import 'package:flutter_address_code_api/features/1_domain/usecases/get_address_usecase.dart';
-
+import 'package:flutter_address_code_api/layers/00-core/errors/failures.dart';
+import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
+import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase.dart';
+import 'package:flutter_address_code_api/layers/04-presenter/bloc/address_code_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

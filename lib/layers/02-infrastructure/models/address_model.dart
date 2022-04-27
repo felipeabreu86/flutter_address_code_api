@@ -1,4 +1,4 @@
-import 'package:flutter_address_code_api/features/1_domain/entities/address.dart';
+import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
 
 class AddressModel extends Address {
   const AddressModel({

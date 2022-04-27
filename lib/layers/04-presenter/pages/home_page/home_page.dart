@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_address_code_api/core/params/address_code_request_params.dart';
-import 'package:flutter_address_code_api/core/utils/constants.dart';
-import 'package:flutter_address_code_api/features/0_presenter/bloc/address_code_bloc.dart';
+import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/00-core/utils/constants.dart';
+import 'package:flutter_address_code_api/layers/04-presenter/bloc/address_code_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 

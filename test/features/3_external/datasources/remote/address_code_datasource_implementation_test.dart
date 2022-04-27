@@ -1,8 +1,8 @@
 import 'dart:typed_data';
 import 'dart:convert';
-import 'package:flutter_address_code_api/core/errors/exceptions.dart';
-import 'package:flutter_address_code_api/core/params/address_code_request_params.dart';
-import 'package:flutter_address_code_api/features/3_external/datasources/remote/address_code_datasource_implementation.dart';
+import 'package:flutter_address_code_api/layers/00-core/errors/exceptions.dart';
+import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/03-external/datasources/remote/address_code_datasource_implementation.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 

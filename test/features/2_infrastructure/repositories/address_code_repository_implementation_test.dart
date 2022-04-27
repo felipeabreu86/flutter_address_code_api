@@ -1,11 +1,11 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_address_code_api/core/errors/exceptions.dart';
-import 'package:flutter_address_code_api/core/errors/failures.dart';
-import 'package:flutter_address_code_api/core/params/address_code_request_params.dart';
-import 'package:flutter_address_code_api/features/1_domain/entities/address.dart';
-import 'package:flutter_address_code_api/features/2_infrastructure/datasources/remote/address_code_datasource.dart';
-import 'package:flutter_address_code_api/features/2_infrastructure/models/address_model.dart';
-import 'package:flutter_address_code_api/features/2_infrastructure/repositories/address_code_repository_implementation.dart';
+import 'package:flutter_address_code_api/layers/00-core/errors/exceptions.dart';
+import 'package:flutter_address_code_api/layers/00-core/errors/failures.dart';
+import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
+import 'package:flutter_address_code_api/layers/02-infrastructure/datasources/remote/address_code_datasource.dart';
+import 'package:flutter_address_code_api/layers/02-infrastructure/models/address_model.dart';
+import 'package:flutter_address_code_api/layers/02-infrastructure/repositories/address_code_repository_implementation.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const tAddressCode = '12345678';

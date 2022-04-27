@@ -1,8 +1,8 @@
 import 'dart:convert';
-import 'package:flutter_address_code_api/core/errors/exceptions.dart';
-import 'package:flutter_address_code_api/core/params/address_code_request_params.dart';
-import 'package:flutter_address_code_api/features/2_infrastructure/datasources/remote/address_code_datasource.dart';
-import 'package:flutter_address_code_api/features/2_infrastructure/models/address_model.dart';
+import 'package:flutter_address_code_api/layers/00-core/errors/exceptions.dart';
+import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/02-infrastructure/datasources/remote/address_code_datasource.dart';
+import 'package:flutter_address_code_api/layers/02-infrastructure/models/address_model.dart';
 import 'package:http/http.dart' as http;
 
 class AddressCodeDatasourceImplementation implements IAddressCodeDatasource {
