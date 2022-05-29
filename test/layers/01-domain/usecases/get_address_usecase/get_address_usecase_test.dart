@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_address_code_api/layers/00-core/errors/failures.dart';
 import 'package:flutter_address_code_api/layers/00-core/params/address_code_request_params.dart';
+import 'package:flutter_address_code_api/layers/00-core/utils/constants.dart';
 import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
 import 'package:flutter_address_code_api/layers/01-domain/repositories/address_code_repository.dart';
-import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase.dart';
+import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase/get_address_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const tAddressCode = '12345678';
@@ -87,7 +88,7 @@ void main() {
     expect(result.isLeft(), true);
     result.fold(
       (exception) =>
-          expect(result, Left(EmptyAddressCodeFailure('Error message'))),
+          expect(result, Left(EmptyAddressCodeFailure(kEmptyAddressCodeError))),
       (address) => {},
     );
   });

@@ -1,4 +1,4 @@
-import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase.dart';
+import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase/get_address_usecase.dart';
 import 'package:flutter_address_code_api/layers/02-infrastructure/repositories/address_code_repository_implementation.dart';
 import 'package:flutter_address_code_api/layers/03-external/datasources/remote/address_code_datasource_implementation.dart';
 import 'package:flutter_address_code_api/layers/04-presenter/bloc/address_code_bloc.dart';
