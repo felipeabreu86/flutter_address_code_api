@@ -4,9 +4,11 @@ import 'package:flutter_address_code_api/layers/01-domain/usecases/validations/i
 import 'package:flutter_address_code_api/layers/01-domain/usecases/validations/length_address_code_validation.dart';
 
 class GetAddressUsecaseValidations {
-  static final List<AddressValidation> validations = [
-    EmptyAddressCodeValidation(),
-    LengthAddressCodeValidation(),
-    InvalidAddressCodeValidation(),
-  ];
+  List<AddressValidation> call() {
+    return [
+      EmptyAddressCodeValidation(),
+      LengthAddressCodeValidation(),
+      InvalidAddressCodeValidation(),
+    ];
+  }
 }

@@ -5,7 +5,7 @@ import 'package:flutter_address_code_api/layers/02-infrastructure/datasources/re
 import 'package:flutter_address_code_api/layers/02-infrastructure/models/address_model.dart';
 import 'package:http/http.dart' as http;
 
-class AddressCodeDatasourceImplementation implements IAddressCodeDatasource {
+class AddressCodeDatasourceImplementation implements AddressCodeDatasource {
   AddressCodeDatasourceImplementation(this.client);
 
   final http.Client client;

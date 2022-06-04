@@ -7,10 +7,10 @@ import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart'
 import 'package:flutter_address_code_api/layers/01-domain/repositories/address_code_repository.dart';
 import 'package:flutter_address_code_api/layers/02-infrastructure/datasources/remote/address_code_datasource.dart';
 
-class AddressCodeRepositoryImplementation implements IAddressCodeRepository {
+class AddressCodeRepositoryImplementation implements AddressCodeRepository {
   AddressCodeRepositoryImplementation(this._addressCodeDatasource);
 
-  final IAddressCodeDatasource _addressCodeDatasource;
+  final AddressCodeDatasource _addressCodeDatasource;
 
   @override
   Future<Either<Failure, Address>> getAddress(

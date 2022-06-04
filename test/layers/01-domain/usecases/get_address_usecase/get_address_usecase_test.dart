@@ -5,13 +5,14 @@ import 'package:flutter_address_code_api/layers/00-core/utils/constants.dart';
 import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
 import 'package:flutter_address_code_api/layers/01-domain/repositories/address_code_repository.dart';
 import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase/get_address_usecase.dart';
+import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase/get_address_usecase_validations.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const tAddressCode = '12345678';
 const tNonExistentAddressCode = '11111111';
 const tUnrecognizedAddressCode = '87654321';
 
-class AddressCodeRepositoryMock implements IAddressCodeRepository {
+class AddressCodeRepositoryMock implements AddressCodeRepository {
   @override
   Future<Either<Failure, Address>> getAddress(
       AddressCodeRequestParams params) async {
@@ -40,7 +41,7 @@ class AddressCodeRepositoryMock implements IAddressCodeRepository {
 
 void main() {
   final repository = AddressCodeRepositoryMock();
-  final usecase = GetAddressUsecase(repository);
+  final usecase = GetAddressUsecase(repository, GetAddressUsecaseValidations());
 
   test(
       'GetAddressUsecase - Should receive the correct address from repository...',

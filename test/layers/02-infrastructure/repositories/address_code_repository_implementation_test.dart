@@ -12,7 +12,7 @@ const tAddressCode = '12345678';
 const tNonExistentAddressCode = '11111111';
 const tUnrecognizedAddressCode = '87654321';
 
-class AddressCodeDatasourceMock implements IAddressCodeDatasource {
+class AddressCodeDatasourceMock implements AddressCodeDatasource {
   @override
   Future<AddressModel> getAddress(AddressCodeRequestParams params) async {
     if (params.cep == tAddressCode) {

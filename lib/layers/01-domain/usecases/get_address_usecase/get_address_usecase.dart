@@ -5,19 +5,16 @@ import 'package:flutter_address_code_api/layers/00-core/usecases/usecase.dart';
 import 'package:flutter_address_code_api/layers/01-domain/entities/address.dart';
 import 'package:flutter_address_code_api/layers/01-domain/repositories/address_code_repository.dart';
 import 'package:flutter_address_code_api/layers/01-domain/usecases/get_address_usecase/get_address_usecase_validations.dart';
-import 'package:flutter_address_code_api/layers/01-domain/usecases/validations/address_validation.dart';
 
 class GetAddressUsecase implements UseCase<Address, AddressCodeRequestParams> {
-  GetAddressUsecase(this._addressCodeRepository);
+  GetAddressUsecase(this._addressCodeRepository, this._validations);
 
-  final IAddressCodeRepository _addressCodeRepository;
-  
-  final List<AddressValidation> _validations =
-      GetAddressUsecaseValidations.validations;
+  final AddressCodeRepository _addressCodeRepository;
+  final GetAddressUsecaseValidations _validations;
 
   @override
   Future<Either<Failure, Address>> call(AddressCodeRequestParams params) async {
-    for (var addressValidation in _validations) {
+    for (var addressValidation in _validations()) {
       if (addressValidation.isNotValid(params)) {
         return Left(addressValidation.getFailure());
       }
