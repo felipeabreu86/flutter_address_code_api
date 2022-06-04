@@ -43,3 +43,13 @@ class InvalidAddressCodeFailure extends Failure {
   @override
   List<Object?> get props => [];
 }
+
+class LengthAddressCodeFailure extends Failure {
+  LengthAddressCodeFailure(this.errorMessage);
+
+  @override
+  final String errorMessage;
+
+  @override
+  List<Object?> get props => [];
+}

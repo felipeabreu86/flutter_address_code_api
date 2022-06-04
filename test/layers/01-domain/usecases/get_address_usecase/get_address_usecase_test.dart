@@ -96,11 +96,32 @@ void main() {
   test('GetAddressUsecase - Should receive an invalid address code failure...',
       () async {
     final Either<Failure, Address> result =
-        await usecase(AddressCodeRequestParams(tAddressCode + 'a'));
+        await usecase(AddressCodeRequestParams('1234567a'));
     expect(result.isLeft(), true);
     result.fold(
       (exception) =>
           expect(result, Left(InvalidAddressCodeFailure('Error message'))),
+      (address) => {},
+    );
+  });
+
+  test('GetAddressUsecase - Should receive a length address code failure...',
+      () async {
+    // length > 8
+    Either<Failure, Address> result =
+        await usecase(AddressCodeRequestParams('123456789'));
+    expect(result.isLeft(), true);
+    result.fold(
+      (exception) => expect(
+          result, Left(LengthAddressCodeFailure(kLengthAddressCodeError))),
+      (address) => {},
+    );
+    // length < 8
+    result = await usecase(AddressCodeRequestParams('1234567'));
+    expect(result.isLeft(), true);
+    result.fold(
+      (exception) => expect(
+          result, Left(LengthAddressCodeFailure(kLengthAddressCodeError))),
       (address) => {},
     );
   });
